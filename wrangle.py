@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 # importing sql 
 import env
-from env import username, password, host 
+from env import user, password, host 
 
 # sklearn train, test, and split function
 from sklearn.model_selection import train_test_split
@@ -37,7 +37,9 @@ def get_zillow_dataset():
                 fips
         FROM properties_2017
         JOIN propertylandusetype using (propertylandusetypeid)
-        WHERE propertylandusedesc = "Single Family Residential"
+        JOIN predictions_2017 ON properties_2017.id = predictions_2017.id
+        WHERE propertylandusetype.propertylandusedesc = "Single Family Residential"
+        AND predictions_2017.transactiondate LIKE "2017%%"
         '''
         db_url = f'mysql+pymysql://{user}:{password}@{host}/zillow'
         # creating the zillow dataframe using Pandas' read_sql() function
