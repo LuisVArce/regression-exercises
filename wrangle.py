@@ -117,4 +117,8 @@ def plot_variable_pairs(train_df, x_features_lst):
         ax.set_xlabel(None)
 
         plt.title(col)
+<<<<<<< HEAD
         plt.show()
+=======
+        plt.show()
+>>>>>>> 65626b1b10d5b40ad272b3927b8515986fadddf7
